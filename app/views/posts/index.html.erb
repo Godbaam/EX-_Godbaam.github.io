@@ -1,0 +1,61 @@
+<div class="banner1" id="banner1">
+    <div class="banner1_text center">
+        <p class="bt1">하고싶은 모든말을 적어주세요</p>
+        <p class="bt2">욕만... 하지말아줘요....!</p>
+    </div>
+    <div class="banner1_btn ">
+        <a href="/posts/new" class="waves-effect waves-light btn transparent wihte-text right btnban">Click!!</a>
+    </div>
+</div> 
+
+<div class="container">
+    <div class="row">
+        <div class="col s0 m2">
+    
+        </div>
+        <div class="col s12 m8">
+            <% if @posts %>
+                <% @posts.each do |post| %>
+                    <div class="card" style="margin-bottom:40px;">
+                        <a class="modal-trigger right" href="#modal<%=post.id%>">
+                            <i class="material-icons mycon">close</i>
+                        </a>
+                        <div class="card-content">
+                            <p class="card-title">안녕, 난 <%=post.name%>!😏</p>
+                            <span class="new badge left red accent-1" style="margin-left:0px;" data-badge-caption="<%=post.created_at.strftime("%Y년 %m월 %d일 %H시쯤")%>"></span>
+                            <br><br>
+                            <p class="cardtext"><%= simple_format(post.content) %></p>
+                            <br>
+                        </div>
+                    </div>
+                    
+                    <div id="modal<%=post.id%>" class="modal">
+                        <%= form_tag post_path(post), method: "delete" do %>
+                            <div class="modal-content">
+                                <h5>정녕 지우십니까? ㅠㅠ</h5>
+                                <br>
+                                <%= password_field_tag :password, nil ,class: "form-control tarea", placeholder: "비밀번호" %>  
+                            </div>
+                            <div class="modal-footer">
+                                <%= button_tag "삭..제", class: "waves-effect waves-light btn orange"%>
+                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">취소</a>
+                            </div>
+                          <% end %>
+                    </div>
+                      
+                <% end %>
+            <% end %>
+        <div class="col s0 m2">
+    
+        </div>
+    </div>
+    </div>
+</div>
+
+
+<script>
+  $(document).ready(function(){
+    $('.modal').modal();
+  });
+</script>
+

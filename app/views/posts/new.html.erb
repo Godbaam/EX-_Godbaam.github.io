@@ -1,0 +1,43 @@
+<div class="banner1" id="banner1">
+    <div class="banner1_text center">
+        <p class="bt1">하고싶은 모든말을 적어주세요</p>
+        <p class="bt2">관심 감사합니다 ^____^</p>
+    </div>
+</div> 
+<div class="container">
+  <br>
+  <div class="row">
+    <div class="col s0 m2"></div>
+    <div class="card col s12 m8">
+      <div class="card-content">
+        <div class="card-title">예쁜말 고운말만 써주세요 :)</div>
+        <br><br>
+        <%= form_tag posts_path, multipart: true do %>
+          <div class="row">
+              <div class="input-field col s12 m4">
+                <%= text_field_tag :name, nil, class: "materialize-textarea", id: "name", placeholder: "ex : 미소천사" %>
+                <label for="name">당신을 표현해줄 닉네임</label>
+              </div>
+              <div class="input-field col s12 m6">
+                <%= password_field_tag :password, nil, class: "materialize-textarea", id: "name", required: true %>
+                <label for="name">비밀번호 (4자리 이상)</label>
+              </div>
+          </div>
+          
+          <div class="row">
+              <div class="input-field col s12">
+                <%= text_area_tag :content, nil, class: "materialize-textarea", id: "content", placeholder: "ex : 오랜만이야, 잘 지냈어?" %>
+                <label for="content">안부를 곱게(?) 전해봐요</label>
+              </div>
+          </div>
+          <div class="input-field">
+              <div class="center-btn">
+            <%= button_tag "작성하기", class: "btn black lighten-2" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col s0 m2"></div>
+  </div>
+</div>
